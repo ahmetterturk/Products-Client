@@ -9,3 +9,13 @@ export const fetchProducts = async () => {
   }
 }
 
+export const login = async (email, password) => {
+  try {
+    const data = {email, password}
+    const response = await axios.post('http://localhost:3333/users/login', data);
+    return response.data
+  } catch (error) {
+    console.log(error);
+  }
+}
+

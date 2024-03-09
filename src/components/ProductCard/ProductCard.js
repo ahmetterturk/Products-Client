@@ -2,7 +2,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const  ProductCard =(item) => {
-  console.log(item);
   const {
     brand,
     category,
@@ -16,11 +15,6 @@ const  ProductCard =(item) => {
     thumbnail,
     title
   } = item.item;
-
-  console.log(title);
-  console.log(description);
-  console.log(item);
-
 
   return (
     <Card style={{ width: '18rem' }}>

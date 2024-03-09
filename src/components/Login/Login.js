@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { login } from '../../api/api';
+import Cookies from 'js-cookie'; 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Email:', email);
-    console.log('Password:', password);
-    // You can add further logic to authenticate the user
+    try {
+      const userData = await login(email, password);
+
+      if(!userData.success){
+        console.log('Login Unsuccessful')
+        return
+      } 
+
+      Cookies.set('currentUser', JSON.stringify(userData), { expires: 7 });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

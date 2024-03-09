@@ -6,6 +6,12 @@ const reducer = (state, action) => {
         products: action.data,
       };
     }
+    case 'SET_CURRENT_USER': {
+      return {
+        ...state,
+        currentUser: action.data,
+      };
+    }
 
     default:
       return state;
