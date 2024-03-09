@@ -56,7 +56,7 @@ function App() {
         <Navigation/>
         <Routes>
           <Route path='/products' element={<Products/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route path='/' element={<Login/>} />
         </Routes>
       </Router>
     </AppContext.Provider>
