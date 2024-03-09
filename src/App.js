@@ -10,7 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './components/Navbar/Navigation';
 import Login from './components/Login/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Cookies from 'js-cookie'; // Import the js-cookie library
+import Cookies from 'js-cookie';
+import ProductPage from './components/ProductPage/ProductPage';
 
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
     const currentUserCookie = Cookies.get('currentUser');
     if (currentUserCookie) {
       const currentUser = JSON.parse(currentUserCookie);
-      console.log('currentUser object:', currentUser);
+      // console.log('currentUser object:', currentUser);
       // Dispatch an action to set the currentUser in the global context
       dispatch({ type: 'SET_CURRENT_USER', data: currentUser });
     } else {
@@ -56,6 +57,7 @@ function App() {
         <Navigation/>
         <Routes>
           <Route path='/products' element={<Products/>} />
+          <Route path="/products/:id" element={<ProductPage />} />
           <Route path='/' element={<Login/>} />
         </Routes>
       </Router>

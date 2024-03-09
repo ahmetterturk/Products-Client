@@ -9,6 +9,15 @@ export const fetchProducts = async () => {
   }
 }
 
+export const fetchProductById = async (id) => {
+  try {
+    const response = await axios.get(`http://localhost:3333/products/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const login = async (email, password) => {
   try {
     const data = {email, password}
@@ -18,4 +27,3 @@ export const login = async (email, password) => {
     console.log(error);
   }
 }
-

@@ -8,7 +8,7 @@ import { useGlobalContext } from '../../globalContext/context';
 
 function Navigation() {
   const { state, dispatch } = useGlobalContext();
-  console.log(state);
+  // console.log(state);
   // console.log(state.currentUser.user.email);
 
   const handleLogout = () => {
