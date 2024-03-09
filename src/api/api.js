@@ -18,6 +18,16 @@ export const fetchProductById = async (id) => {
   }
 };
 
+export const editProduct = async (id, newData) => {
+  try {
+    const response = await axios.patch(`http://localhost:3333/products/${id}`, newData);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 export const login = async (email, password) => {
   try {
     const data = {email, password}
