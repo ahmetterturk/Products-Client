@@ -1,8 +1,10 @@
 import axios from 'axios'
 
+const backendUrl = 'http://localhost:8080'
+
 export const fetchProducts = async () => {
   try {
-    const response = await axios.get('http://localhost:3333/products');
+    const response = await axios.get(`${backendUrl}/products`);
     return response.data
   } catch (error) {
     console.log(error);
@@ -11,7 +13,7 @@ export const fetchProducts = async () => {
 
 export const fetchProductById = async (id) => {
   try {
-    const response = await axios.get(`http://localhost:3333/products/${id}`);
+    const response = await axios.get(`${backendUrl}/products/${id}`);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -20,7 +22,7 @@ export const fetchProductById = async (id) => {
 
 export const addProduct = async (newProductData) => {
   try {
-    const response = await axios.post('http://localhost:3333/products', newProductData);
+    const response = await axios.post(`${backendUrl}/products`, newProductData);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -30,7 +32,7 @@ export const addProduct = async (newProductData) => {
 
 export const editProduct = async (id, newData) => {
   try {
-    const response = await axios.patch(`http://localhost:3333/products/${id}`, newData);
+    const response = await axios.patch(`${backendUrl}/products/${id}`, newData);
     return response.data;
   } catch (error) {
     console.log(error);
