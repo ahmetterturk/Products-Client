@@ -6,6 +6,8 @@ import { fetchProducts } from './api/api';
 import reducer from './globalContext/reducer';
 import { initialState } from './globalContext/initalState';
 import { AppContext } from './globalContext/context';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
@@ -22,10 +24,7 @@ function App() {
 
   return (
    <AppContext.Provider value={{ state, dispatch }}>
-    <div className="App">
-      Hello
       <Products />
-    </div>
     </AppContext.Provider>
   );
 }

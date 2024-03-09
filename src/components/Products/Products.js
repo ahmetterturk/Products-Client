@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 // import { useDispatch } from 'react-redux';
 import { useGlobalContext } from '../../globalContext/context';
+import ProductCard from '../ProductCard/ProductCard';
 
 const Products = () => {
 
@@ -9,7 +10,11 @@ const Products = () => {
 
   console.log(items);
 
-  return <div>Product List</div>;
+  return <div>Product List
+    {items?.map(item => {
+      return <ProductCard item={item} />
+    })}
+  </div>;
 };
 
 export default Products;
