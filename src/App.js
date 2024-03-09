@@ -7,7 +7,9 @@ import reducer from './globalContext/reducer';
 import { initialState } from './globalContext/initalState';
 import { AppContext } from './globalContext/context';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Navigation from './components/Navbar/Navigation';
+import Login from './components/Login/Login';
+import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom';
 
 
 function App() {
@@ -24,7 +26,13 @@ function App() {
 
   return (
    <AppContext.Provider value={{ state, dispatch }}>
-      <Products />
+      <Router>
+        <Navigation/>
+        <Routes>
+          <Route path='/products' element={<Products/>} />
+          <Route path='/login' element={<Login/>} />
+        </Routes>
+      </Router>
     </AppContext.Provider>
   );
 }
