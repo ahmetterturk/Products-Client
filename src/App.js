@@ -12,6 +12,7 @@ import Login from './components/Login/Login';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import ProductPage from './components/ProductPage/ProductPage';
+import ProductForm from './components/ProductsForm/ProductForm';
 
 
 function App() {
@@ -27,22 +28,11 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  // useEffect(() => {
-  //   const currentUserCookie = Cookies.get('currentUser');
-  //   if (currentUserCookie) {
-  //     const currentUser = JSON.parse(currentUserCookie);
-  //     console.log('currentUser object:', currentUser);
-  //   } else {
-  //     console.log('currentUser cookie not found');
-  //   }
-  // }, []);
 
   useEffect(() => {
     const currentUserCookie = Cookies.get('currentUser');
     if (currentUserCookie) {
       const currentUser = JSON.parse(currentUserCookie);
-      // console.log('currentUser object:', currentUser);
-      // Dispatch an action to set the currentUser in the global context
       dispatch({ type: 'SET_CURRENT_USER', data: currentUser });
     } else {
       console.log('currentUser cookie not found');
@@ -58,6 +48,7 @@ function App() {
         <Routes>
           <Route path='/products' element={<Products/>} />
           <Route path="/products/:id" element={<ProductPage />} />
+          <Route path='/new-product' element={<ProductForm dispatch={dispatch} />} />
           <Route path='/' element={<Login/>} />
         </Routes>
       </Router>
