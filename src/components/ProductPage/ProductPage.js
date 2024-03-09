@@ -38,7 +38,7 @@ const ProductPage = () => {
     e.preventDefault();
     try {
       const updatedProduct = await editProduct(id, formData);
-      setProduct(updatedProduct);
+      dispatch({ type: 'UPDATE_PRODUCT', updatedProduct });
       navigate('/products');
     } catch (error) {
       console.log(error);

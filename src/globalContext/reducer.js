@@ -12,7 +12,17 @@ const reducer = (state, action) => {
         currentUser: action.data,
       };
     }
-
+    case 'UPDATE_PRODUCT': {
+      const updatedProducts = state.products.products ? [...state.products.products] : [...state.products]
+      const index = updatedProducts.findIndex((product) => product.id === action.updatedProduct.id);
+      if (index !== -1) {
+        updatedProducts.splice(index, 1, action.updatedProduct); 
+      }
+      return {
+        ...state,
+        products: updatedProducts,
+      };
+    }
     default:
       return state;
   }
