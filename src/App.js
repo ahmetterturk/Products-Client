@@ -57,6 +57,7 @@ function App() {
           <Route path='/users/:id' element={<UserPage />} />
           <Route path="/new-user" element={<UserForm />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path='/cart' element={<Cart/>} />
         </Routes>
       </Router>

@@ -8,6 +8,7 @@ import { useGlobalContext } from '../../globalContext/context';
 
 function Navigation() {
   const { state, dispatch } = useGlobalContext();
+  const { currentUser } = state;
 
   const handleLogout = () => {
     Cookies.remove('currentUser');
@@ -19,17 +20,22 @@ function Navigation() {
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Nav className="me-auto">
-            {state.currentUser?.user?.email ? (
+            {currentUser?.user?.email ? (
               <>
                 <Link to="/products" className="nav-link">Products</Link>
-                <Link to="/new-product" className="nav-link">New Product</Link>
-                <Link to="/users" className="nav-link">Users</Link>
-                <Link to="/new-user" className="nav-link">New User</Link>
+                {currentUser.user.isAdmin && <Link to="/new-product" className="nav-link">New Product</Link>}
+                {currentUser.user.permissions === 'edit' && <Link to="/new-user" className="nav-link">New User</Link>}
                 <Link to="/cart" className="nav-link">Cart</Link>
                 <Link to="/search" className="nav-link">Search</Link>
                 <Link to="/" className="nav-link" onClick={handleLogout}>Logout</Link>
               </>
-            ) : null}
+            ) : (
+              <>
+                <Link to="/products" className="nav-link">Products</Link>
+                <Link to="/search" className="nav-link">Search</Link>
+                <Link to="/login" className="nav-link">Login</Link>
+              </>
+            )}
           </Nav>
         </Container>
       </Navbar>
