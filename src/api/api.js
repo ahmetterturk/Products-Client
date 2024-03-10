@@ -39,11 +39,21 @@ export const editProduct = async (id, newData) => {
   }
 };
 
+export const fetchUsers = async () => {
+  try {
+    const response = await axios.get(`${backendUrl}/users`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    throw error; // You might want to handle this error in the calling function
+  }
+};
+
 
 export const login = async (email, password) => {
   try {
     const data = {email, password}
-    const response = await axios.post('http://localhost:3333/users/login', data);
+    const response = await axios.post(`${backendUrl}/users/login`, data);
     return response.data
   } catch (error) {
     console.log(error);

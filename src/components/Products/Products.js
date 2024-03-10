@@ -8,10 +8,9 @@ const Products = () => {
   const items = state?.products?.products
   const updatedItems = state?.products
   const listItems = items || updatedItems
-  const reversedList = [...listItems].reverse();
   
   return <div>Product List
-    {reversedList?.map(item => {
+    {listItems?.map(item => {
       return <ProductCard item={item} />
     })}
   </div>;

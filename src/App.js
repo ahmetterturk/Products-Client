@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import ProductPage from './components/ProductPage/ProductPage';
 import ProductForm from './components/ProductsForm/ProductForm';
+import Users from './components/Users/Users';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path='/products' element={<Products/>} />
           <Route path="/products/:id" element={<ProductPage />} />
           <Route path='/new-product' element={<ProductForm dispatch={dispatch} />} />
+          <Route path='/users' element={<Users />} />
           <Route path='/' element={<Login/>} />
         </Routes>
       </Router>

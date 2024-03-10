@@ -16,7 +16,7 @@ const reducer = (state, action) => {
       const newProduct = state.products.products ? [...state.products.products] : [...state.products]
       return {
         ...state,
-        products: [...newProduct, action.newProduct],
+        products: [action.newProduct, ...newProduct ],
       };
     }
     case 'UPDATE_PRODUCT': {
@@ -28,6 +28,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         products: updatedProducts,
+      };
+    }
+    case 'GET_USERS': {
+      return {
+        ...state,
+        users: action.data,
       };
     }
     default:
