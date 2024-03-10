@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
 import { useGlobalContext } from '../../globalContext/context';
+import { addProduct } from '../../api/api';
 
 const ProductForm = ({ dispatch }) => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,8 @@ const ProductForm = ({ dispatch }) => {
     images: '',
     rating: '',
     stock: '',
-    thumbnail: ''
+    thumbnail: '',
+    id: ''
   });
 
   const { state } = useGlobalContext();
@@ -24,11 +26,15 @@ const ProductForm = ({ dispatch }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('formData', formData);
-    dispatch({ type: 'ADD_PRODUCT', newProduct: formData });
-    navigate('/products');
+    try {
+      const newProduct = await addProduct(formData);
+      dispatch({ type: 'ADD_PRODUCT', newProduct });
+      navigate('/products');
+    } catch (error) {
+      console.error('Error creating product:', error);
+    }
   };
 
   const isAdmin = state?.currentUser?.user?.isAdmin;
