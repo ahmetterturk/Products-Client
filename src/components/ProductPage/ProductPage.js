@@ -55,46 +55,50 @@ const ProductPage = () => {
   return (
     <div>
       {product && <ProductCard item={product} isViewPage/>}
-      <h2>Edit Product</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicTitle">
-          <Form.Label>Title</Form.Label>
-          <Form.Control type="text" placeholder="Enter title" name="title" value={formData.title} onChange={handleChange} />
-        </Form.Group>
+      {(state?.currentUser?.user?.isAdmin || state?.currentUser?.user?.permissions === 'edit') && (
+        <>
+          <h2>Edit Product</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicTitle">
+              <Form.Label>Title</Form.Label>
+              <Form.Control type="text" placeholder="Enter title" name="title" value={formData.title} onChange={handleChange} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicDescription">
-          <Form.Label>Description</Form.Label>
-          <Form.Control type="text" placeholder="Enter description" name="description" value={formData.description} onChange={handleChange} />
-        </Form.Group>
+            <Form.Group controlId="formBasicDescription">
+              <Form.Label>Description</Form.Label>
+              <Form.Control type="text" placeholder="Enter description" name="description" value={formData.description} onChange={handleChange} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicPrice">
-          <Form.Label>Price</Form.Label>
-          <Form.Control type="text" placeholder="Enter price" name="price" value={formData.price} onChange={handleChange} />
-        </Form.Group>
+            <Form.Group controlId="formBasicPrice">
+              <Form.Label>Price</Form.Label>
+              <Form.Control type="text" placeholder="Enter price" name="price" value={formData.price} onChange={handleChange} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicBrand">
-          <Form.Label>Brand</Form.Label>
-          <Form.Control type="text" placeholder="Enter brand" name="brand" value={formData.brand} onChange={handleChange} />
-        </Form.Group>
+            <Form.Group controlId="formBasicBrand">
+              <Form.Label>Brand</Form.Label>
+              <Form.Control type="text" placeholder="Enter brand" name="brand" value={formData.brand} onChange={handleChange} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicCategory">
-          <Form.Label>Category</Form.Label>
-          <Form.Control type="text" placeholder="Enter category" name="category" value={formData.category} onChange={handleChange} />
-        </Form.Group>
+            <Form.Group controlId="formBasicCategory">
+              <Form.Label>Category</Form.Label>
+              <Form.Control type="text" placeholder="Enter category" name="category" value={formData.category} onChange={handleChange} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicRating">
-          <Form.Label>Rating</Form.Label>
-          <Form.Control type="text" placeholder="Enter rating" name="rating" value={formData.rating} onChange={handleChange} />
-        </Form.Group>
+            <Form.Group controlId="formBasicRating">
+              <Form.Label>Rating</Form.Label>
+              <Form.Control type="text" placeholder="Enter rating" name="rating" value={formData.rating} onChange={handleChange} />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicStock">
-          <Form.Label>Stock</Form.Label>
-          <Form.Control type="text" placeholder="Enter stock" name="stock" value={formData.stock} onChange={handleChange} />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Edit
-        </Button>
-      </Form>
+            <Form.Group controlId="formBasicStock">
+              <Form.Label>Stock</Form.Label>
+              <Form.Control type="text" placeholder="Enter stock" name="stock" value={formData.stock} onChange={handleChange} />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Edit
+            </Button>
+          </Form>
+        </>
+      )}
     </div>
   );
 }

@@ -4,10 +4,14 @@ import ProductCard from '../ProductCard/ProductCard';
 import { createSoldItem } from '../../api/api';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { useGlobalContext } from '../../globalContext/context';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const { state, dispatch } = useGlobalContext();
+  console.log(state.currentUser);
+
 
   useEffect(() => {
     const fetchCartItems = () => {
@@ -40,9 +44,11 @@ const Cart = () => {
       <h2>Cart Page</h2>
       {cartItems.length > 0 ? (
         <>
-          <button className="btn btn-primary mb-3" onClick={handleCheckout}>
+          {state.currentUser.email ? <button className="btn btn-primary mb-3" onClick={handleCheckout}>
             Checkout
-          </button>
+          </button> : 
+          <p>Please login to checkout</p>
+          }
           <ul className="list-group">
             {cartItems?.map((item, index) => (
               <ProductCard key={index} item={item} />
