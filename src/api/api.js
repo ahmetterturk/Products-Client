@@ -76,6 +76,16 @@ export const editUser = async (id, newData) => {
   }
 };
 
+export const createSoldItem = async (itemData) => {
+  try {
+    const response = await axios.post(`${backendUrl}/sold-items`, itemData);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating sold item:', error);
+    throw error;
+  }
+};
+
 export const login = async (email, password) => {
   try {
     const data = {email, password}
