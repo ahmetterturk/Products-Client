@@ -5,6 +5,7 @@ import { createSoldItem } from '../../api/api';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useGlobalContext } from '../../globalContext/context';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -38,20 +39,22 @@ const Cart = () => {
   };
 
   return (
-    <div className="container">
+    <Container>
       <h2>Cart Page</h2>
       {cartItems.length > 0 ? (
         <>
-          {state?.currentUser?.user?.email ? <button className="btn btn-primary mb-3" onClick={handleCheckout}>
+          {state?.currentUser?.user?.email ? <Button className="mb-3" variant="primary" onClick={handleCheckout}>
             Checkout
-          </button> : 
+          </Button> : 
           <p>Please login to checkout</p>
           }
-          <ul className="list-group">
+          <Row xs={1} md={2} lg={3} className="g-4">
             {cartItems?.map((item, index) => (
-              <ProductCard key={index} item={item} />
+              <Col key={index}>
+                <ProductCard item={item} />
+              </Col>
             ))}
-          </ul>
+          </Row>
         </>
       ) : (
         <p>Your cart is empty</p>
@@ -68,7 +71,7 @@ const Cart = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </Container>
   );
 };
 
