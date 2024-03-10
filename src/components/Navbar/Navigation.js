@@ -13,8 +13,9 @@ function Navigation() {
 
   const handleLogout = () => {
     Cookies.remove('currentUser');
+    Cookies.remove('cartItems');
     dispatch({ type: 'SET_CURRENT_USER', data: {} });
-    navigate('/products'); 
+    navigate('/products');
   };
 
   return (

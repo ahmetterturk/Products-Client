@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
 import { login } from '../../api/api';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import { useGlobalContext } from '../../globalContext/context'
+import { useGlobalContext } from '../../globalContext/context';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate hook
-  const { dispatch } = useGlobalContext(); // Get dispatch function from global context
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const { dispatch } = useGlobalContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +18,7 @@ const Login = () => {
       const userData = await login(email, password);
 
       if (!userData.success) {
-        console.log('Login Unsuccessful');
+        setShowModal(true);
         return;
       }
 
@@ -28,6 +29,10 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -58,6 +63,18 @@ const Login = () => {
           Submit
         </Button>
       </Form>
+
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login Unsuccessful</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Your login attempt was unsuccessful. Please check your credentials and try again.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

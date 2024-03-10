@@ -44,7 +44,7 @@ const Cart = () => {
       <h2>Cart Page</h2>
       {cartItems.length > 0 ? (
         <>
-          {state.currentUser.email ? <button className="btn btn-primary mb-3" onClick={handleCheckout}>
+          {state?.currentUser?.user?.email ? <button className="btn btn-primary mb-3" onClick={handleCheckout}>
             Checkout
           </button> : 
           <p>Please login to checkout</p>
