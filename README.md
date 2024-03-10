@@ -2,6 +2,7 @@
 
 ### How to run with docker
 - clone repo
+- run `npm install`
 - run `docker-compose up --build`
   
 ### How to run with locally
