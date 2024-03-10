@@ -6,13 +6,10 @@ import { Container, Form, Button } from 'react-bootstrap';
 const YourComponent = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  console.log('searchQuery', searchQuery);
-  console.log('searchResults', searchResults);
 
   const handleSearch = async () => {
     try {
       const results = await searchProducts(searchQuery);
-      console.log('results', results);
       setSearchResults(results);
     } catch (error) {
       console.log(error);

@@ -22,8 +22,6 @@ import SearchPage from './components/SearchPage/SearchPage';
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log(state);
-
   useEffect(() => {
     fetchProducts()
       .then((data) => {

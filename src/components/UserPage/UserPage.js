@@ -43,7 +43,6 @@ const UserPage = () => {
     e.preventDefault();
     try {
       const updatedUser = await editUser(id, formData, state?.currentUser?.user);
-      console.log('User updated:', updatedUser);
       navigate('/users');
     } catch (error) {
       console.error('Error editing user:', error);

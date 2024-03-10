@@ -10,8 +10,6 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const { state, dispatch } = useGlobalContext();
-  console.log(state.currentUser);
-
 
   useEffect(() => {
     const fetchCartItems = () => {
