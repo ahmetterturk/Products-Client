@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
+import { useGlobalContext } from '../../globalContext/context';
 
 const ProductForm = ({ dispatch }) => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ const ProductForm = ({ dispatch }) => {
     thumbnail: ''
   });
 
+  const { state } = useGlobalContext();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,6 +30,14 @@ const ProductForm = ({ dispatch }) => {
     dispatch({ type: 'ADD_PRODUCT', newProduct: formData });
     navigate('/products');
   };
+
+  const isAdmin = state?.currentUser?.user?.isAdmin;
+  const hasEditPermissions = state?.currentUser?.user?.permissions === 'edit';
+
+  if (!isAdmin && !hasEditPermissions) {
+    navigate('/products');
+    return null;
+  }
 
   return (
     <div>

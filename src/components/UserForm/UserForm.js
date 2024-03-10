@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createUser } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../globalContext/context';
 
 const UserForm = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,15 @@ const UserForm = () => {
     permissions: 'read',
   });
 
+  const { state } = useGlobalContext();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the user is admin, if not, redirect to products page
+    if (!state?.currentUser?.user?.isAdmin) {
+      navigate('/products');
+    }
+  }, [state?.currentUser?.user?.isAdmin, navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
