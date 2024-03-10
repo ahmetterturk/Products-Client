@@ -28,7 +28,7 @@ const UserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newUser = await createUser(formData);
+      const newUser = await createUser(formData, state?.currentUser?.user);
       navigate('/users');
     } catch (error) {
       console.error('Error creating user:', error);

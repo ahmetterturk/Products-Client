@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { fetchUserById, editUser } from '../../api/api';
 import { Card, Form, Button, Container } from 'react-bootstrap';
+import { useGlobalContext } from '../../globalContext/context';
 
 const UserPage = () => {
   const [user, setUser] = useState(null);
@@ -13,6 +14,7 @@ const UserPage = () => {
   });
   const { id } = useParams();
   const navigate = useNavigate();
+  const { state } = useGlobalContext();
 
   useEffect(() => {
     const getUser = async () => {
@@ -40,7 +42,7 @@ const UserPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedUser = await editUser(id, formData);
+      const updatedUser = await editUser(id, formData, state?.currentUser?.user);
       console.log('User updated:', updatedUser);
       navigate('/users');
     } catch (error) {

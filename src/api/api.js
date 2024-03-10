@@ -58,21 +58,23 @@ export const fetchUserById = async (id) => {
   }
 };
 
-export const createUser = async (userData) => {
+export const createUser = async (userData, adminData) => {
   try {
-    const response = await axios.post(`${backendUrl}/users`, userData);
+    const requestData = { ...userData, adminData };
+    const response = await axios.post(`${backendUrl}/users`, requestData);
     return response.data;
   } catch (error) {
     console.error('Error creating user:', error);
   }
 };
 
-export const editUser = async (id, newData) => {
+export const editUser = async (id, newData, adminData) => {
   try {
-    const response = await axios.patch(`${backendUrl}/users/${id}`, newData);
+    const requestData = { ...newData, adminData };
+    const response = await axios.patch(`${backendUrl}/users/${id}`, requestData);
     return response.data;
   } catch (error) {
-    console.log(error);
+    console.error('Error editing user:', error);
   }
 };
 
