@@ -100,12 +100,9 @@ export const login = async (email, password) => {
 
 export const searchProducts = async (query) => {
   try {
-    console.log('query', query);
-    const response = await axios.get(`${backendUrl}/products/search`, { params: { q: query } });
-    console.log('response', response.data);
+    const response = await axios.get(`${backendUrl}/products/search?q=${query}`);
     return response.data;
   } catch (error) {
-    console.error('Error searching products:', error);
-    throw error;
+    console.log(error);
   }
 };
