@@ -30,9 +30,9 @@ export const addProduct = async (newProductData) => {
 };
 
 
-export const editProduct = async (id, newData) => {
+export const editProduct = async (id, newData, userData) => {
   try {
-    const response = await axios.patch(`${backendUrl}/products/${id}`, newData);
+    const response = await axios.patch(`${backendUrl}/products/${id}`, { newData, userData });
     return response.data;
   } catch (error) {
     console.log(error);

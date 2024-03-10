@@ -44,7 +44,7 @@ const ProductPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedProduct = await editProduct(id, formData);
+      const updatedProduct = await editProduct(id, formData, state?.currentUser);
       dispatch({ type: 'UPDATE_PRODUCT', updatedProduct });
       navigate('/products');
     } catch (error) {
