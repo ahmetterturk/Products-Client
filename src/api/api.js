@@ -58,6 +58,15 @@ export const fetchUserById = async (id) => {
   }
 };
 
+export const editUser = async (id, newData) => {
+  try {
+    const response = await axios.patch(`${backendUrl}/users/${id}`, newData);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const login = async (email, password) => {
   try {
     const data = {email, password}
