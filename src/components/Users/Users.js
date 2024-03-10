@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useGlobalContext } from '../../globalContext/context';
 import { fetchUsers } from '../../api/api';
+import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Users = () => {
   const { state, dispatch } = useGlobalContext();
@@ -22,7 +24,20 @@ const Users = () => {
   return (
     <div>
       <h2>Users</h2>
-      {/* Render users data here */}
+      {state.users.map((user, index) => (
+        <Card key={index} style={{ width: '18rem', marginBottom: '20px' }}>
+          <Card.Body>
+            <Card.Title>Email: {user.email}</Card.Title>
+            <Card.Text>Is Admin: {user.isAdmin.toString()}</Card.Text>
+            <Card.Text>Password: {user.password}</Card.Text>
+            <Card.Text>Permissions: {user.permissions}</Card.Text>
+            <Card.Text>id: {user._id}</Card.Text>
+            <Link to={`/users/${user._id}`}>
+              <Button variant="primary">View User</Button>
+            </Link>
+          </Card.Body>
+        </Card>
+      ))}
     </div>
   );
 };
