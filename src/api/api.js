@@ -45,10 +45,18 @@ export const fetchUsers = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching users:', error);
-    throw error; // You might want to handle this error in the calling function
   }
 };
 
+export const fetchUserById = async (id) => {
+  try {
+    const response = await axios.get(`${backendUrl}/users/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching user by ID:', error);
+    throw error;
+  }
+};
 
 export const login = async (email, password) => {
   try {

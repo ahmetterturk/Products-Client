@@ -1,7 +1,6 @@
 import './App.css';
 import { useState, useEffect, useReducer } from 'react';
 import Products from './components/Products/Products';
-// import { fetchProducts } from './actions/products';
 import { fetchProducts } from './api/api';
 import reducer from './globalContext/reducer';
 import { initialState } from './globalContext/initalState';
@@ -14,6 +13,7 @@ import Cookies from 'js-cookie';
 import ProductPage from './components/ProductPage/ProductPage';
 import ProductForm from './components/ProductsForm/ProductForm';
 import Users from './components/Users/Users';
+import UserPage from './components/UserPage/UserPage';
 
 
 function App() {
@@ -51,6 +51,7 @@ function App() {
           <Route path="/products/:id" element={<ProductPage />} />
           <Route path='/new-product' element={<ProductForm dispatch={dispatch} />} />
           <Route path='/users' element={<Users />} />
+          <Route path='/users/:id' element={<UserPage />} />
           <Route path='/' element={<Login/>} />
         </Routes>
       </Router>
