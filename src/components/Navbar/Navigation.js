@@ -26,6 +26,7 @@ function Navigation() {
                 <Link to="/users" className="nav-link">Users</Link>
                 <Link to="/new-user" className="nav-link">New User</Link>
                 <Link to="/cart" className="nav-link">Cart</Link>
+                <Link to="/search" className="nav-link">Search</Link>
                 <Link to="/" className="nav-link" onClick={handleLogout}>Logout</Link>
               </>
             ) : null}

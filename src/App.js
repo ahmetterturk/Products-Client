@@ -16,6 +16,7 @@ import Users from './components/Users/Users';
 import UserPage from './components/UserPage/UserPage';
 import UserForm from './components/UserForm/UserForm';
 import Cart from './components/Cart/Cart';
+import SearchPage from './components/SearchPage/SearchPage';
 
 
 function App() {
@@ -55,7 +56,7 @@ function App() {
           <Route path='/users' element={<Users />} />
           <Route path='/users/:id' element={<UserPage />} />
           <Route path="/new-user" element={<UserForm />} />
-          <Route path="/new-user" element={<UserForm />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path='/cart' element={<Cart/>} />
         </Routes>
       </Router>
