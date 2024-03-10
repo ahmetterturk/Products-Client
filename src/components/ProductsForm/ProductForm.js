@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 import { useGlobalContext } from '../../globalContext/context';
 
 const ProductForm = ({ dispatch }) => {
@@ -40,7 +40,7 @@ const ProductForm = ({ dispatch }) => {
   }
 
   return (
-    <div>
+    <Container className="mt-4">
       <h2>Create New Product</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicTitle">
@@ -87,7 +87,7 @@ const ProductForm = ({ dispatch }) => {
           Submit
         </Button>
       </Form>
-    </div>
+    </Container>
   );
 }
 

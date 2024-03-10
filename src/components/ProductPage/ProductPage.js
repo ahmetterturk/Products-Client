@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ProductCard from './../ProductCard/ProductCard'; 
 import { useGlobalContext } from '../../globalContext/context';
 import { fetchProductById, editProduct } from '../../api/api';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -53,7 +53,7 @@ const ProductPage = () => {
   };
 
   return (
-    <div>
+    <Container className="mt-4">
       {product && <ProductCard item={product} isViewPage/>}
       {(state?.currentUser?.user?.isAdmin || state?.currentUser?.user?.permissions === 'edit') && (
         <>
@@ -99,7 +99,7 @@ const ProductPage = () => {
           </Form>
         </>
       )}
-    </div>
+    </Container>
   );
 }
 
