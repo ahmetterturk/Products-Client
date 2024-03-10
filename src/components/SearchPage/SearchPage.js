@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { searchProducts } from '../../api/api';
-import ProductCard from '../ProductCard/ProductCard'
+import ProductCard from '../ProductCard/ProductCard';
+import { Container, Form, Button } from 'react-bootstrap';
 
 const YourComponent = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,15 +20,26 @@ const YourComponent = () => {
   };
 
   return (
-    <div>
-      <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-      <button onClick={handleSearch}>Search</button>
-      <ul>
+    <Container className="mt-4">
+      <Form>
+        <Form.Group controlId="formBasicSearch">
+          <Form.Control
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </Form.Group>
+        <Button variant="primary" onClick={handleSearch}>
+          Search
+        </Button>
+      </Form>
+      <div className="d-flex flex-wrap">
         {searchResults?.products?.map((product) => (
-          <ProductCard item={product} />
+          <ProductCard key={product.id} item={product} />
         ))}
-      </ul>
-    </div>
+      </div>
+    </Container>
   );
 };
 
