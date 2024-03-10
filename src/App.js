@@ -14,6 +14,7 @@ import ProductPage from './components/ProductPage/ProductPage';
 import ProductForm from './components/ProductsForm/ProductForm';
 import Users from './components/Users/Users';
 import UserPage from './components/UserPage/UserPage';
+import UserForm from './components/UserForm/UserForm';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path='/new-product' element={<ProductForm dispatch={dispatch} />} />
           <Route path='/users' element={<Users />} />
           <Route path='/users/:id' element={<UserPage />} />
+          <Route path="/new-user" element={<UserForm />} />
           <Route path='/' element={<Login/>} />
         </Routes>
       </Router>

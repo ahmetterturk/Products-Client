@@ -58,6 +58,15 @@ export const fetchUserById = async (id) => {
   }
 };
 
+export const createUser = async (userData) => {
+  try {
+    const response = await axios.post(`${backendUrl}/users`, userData);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating user:', error);
+  }
+};
+
 export const editUser = async (id, newData) => {
   try {
     const response = await axios.patch(`${backendUrl}/users/${id}`, newData);

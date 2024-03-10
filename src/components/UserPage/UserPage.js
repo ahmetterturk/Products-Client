@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { fetchUserById, editUser } from '../../api/api';
 import { Card, Form, Button } from 'react-bootstrap';
 
@@ -12,6 +12,7 @@ const UserPage = () => {
     permissions: '',
   });
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -26,7 +27,6 @@ const UserPage = () => {
         });
       } catch (error) {
         console.error('Error fetching user:', error);
-        // Handle error if needed
       }
     };
 
@@ -41,9 +41,8 @@ const UserPage = () => {
     e.preventDefault();
     try {
       const updatedUser = await editUser(id, formData);
-      // Assuming you have a function to update the user in the global context
-      // updateUserInContext(updatedUser);
       console.log('User updated:', updatedUser);
+      navigate('/users');
     } catch (error) {
       console.error('Error editing user:', error);
     }
