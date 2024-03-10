@@ -15,6 +15,7 @@ import ProductForm from './components/ProductsForm/ProductForm';
 import Users from './components/Users/Users';
 import UserPage from './components/UserPage/UserPage';
 import UserForm from './components/UserForm/UserForm';
+import Cart from './components/Cart/Cart';
 
 
 function App() {
@@ -54,7 +55,8 @@ function App() {
           <Route path='/users' element={<Users />} />
           <Route path='/users/:id' element={<UserPage />} />
           <Route path="/new-user" element={<UserForm />} />
-          <Route path='/' element={<Login/>} />
+          <Route path="/new-user" element={<UserForm />} />
+          <Route path='/cart' element={<Cart/>} />
         </Routes>
       </Router>
     </AppContext.Provider>

@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, isViewPage}) => {
   const {
     brand,
     category,
@@ -28,10 +28,10 @@ const ProductCard = ({ item }) => {
         <Card.Text>Rating: {rating}</Card.Text>
         <Card.Text>Stock: {stock}</Card.Text>
         <Card.Text>Category: {category}</Card.Text>
-        <Link to={`/products/${id}`}>
-          <Button variant="primary">Edit</Button>
-        </Link>
-        <Button variant="primary">Add To Cart</Button>
+        {!isViewPage && <Link to={`/products/${id}`}>
+          <Button variant="primary">View</Button>
+        </Link>}
+        {isViewPage && <Button variant="primary">Add To Cart</Button>}
       </Card.Body>
     </Card>
   );

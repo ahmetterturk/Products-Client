@@ -54,7 +54,7 @@ const ProductPage = () => {
 
   return (
     <div>
-      {product && <ProductCard item={product} />}
+      {product && <ProductCard item={product} isViewPage/>}
       <h2>Edit Product</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicTitle">
@@ -92,7 +92,7 @@ const ProductPage = () => {
           <Form.Control type="text" placeholder="Enter stock" name="stock" value={formData.stock} onChange={handleChange} />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Edit
         </Button>
       </Form>
     </div>
