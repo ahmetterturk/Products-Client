@@ -26,8 +26,9 @@ function Navigation() {
             {currentUser?.user?.email ? (
               <>
                 <Link to="/products" className="nav-link">Products</Link>
-                {(currentUser.user.isAdmin || currentUser.user.permissions === 'edit' ) && <Link to="/new-product" className="nav-link">New Product</Link>}
-                {currentUser.user.isAdmin && <Link to="/new-user" className="nav-link">New User</Link>}
+                {(currentUser?.user?.isAdmin || currentUser.user.permissions === 'edit' ) && <Link to="/new-product" className="nav-link">New Product</Link>}
+                {currentUser?.user?.isAdmin && <Link to="/new-user" className="nav-link">New User</Link>}
+                {currentUser?.user?.isAdmin && <Link to="/users" className="nav-link">Users</Link>}
                 <Link to="/cart" className="nav-link">Cart</Link>
                 <Link to="/search" className="nav-link">Search</Link>
                 <Link to="/" className="nav-link" onClick={handleLogout}>Logout</Link>
