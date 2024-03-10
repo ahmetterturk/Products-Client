@@ -38,14 +38,20 @@ const Cart = () => {
   return (
     <div className="container">
       <h2>Cart Page</h2>
-      <button className="btn btn-primary mb-3" onClick={handleCheckout}>
-        Checkout
-      </button>
-      <ul className="list-group">
-        {cartItems?.map((item, index) => (
-          <ProductCard key={index} item={item} />
-        ))}
-      </ul>
+      {cartItems.length > 0 ? (
+        <>
+          <button className="btn btn-primary mb-3" onClick={handleCheckout}>
+            Checkout
+          </button>
+          <ul className="list-group">
+            {cartItems?.map((item, index) => (
+              <ProductCard key={index} item={item} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>Your cart is empty</p>
+      )}
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
